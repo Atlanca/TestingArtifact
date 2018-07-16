@@ -37,31 +37,30 @@ class Answered(object):
             weights.append(weight)
 
         return weights
-class Question():
-        
-    def get_question(questions, answered):
-        """Get a random question weighted by
-        previous answers.
 
-        partof: #SPC-quiz-get
-        """
-        weights = answered.get_weights(questions)
-        return weighted_choice(weights, choices)
+def get_question(questions, answered):
+    """Get a random question weighted by
+    previous answers.
+
+    partof: #SPC-quiz-get
+    """
+    weights = answered.get_weights(questions)
+    return weighted_choice(weights, choices)
 
 
-    def weighted_choice(weights, choices):
-        """Get a choice randomly based on the weights.
+def weighted_choice(weights, choices):
+    """Get a choice randomly based on the weights.
 
-        taken from:
-            http://stackoverflow.com/questions/3679694
+    taken from:
+        http://stackoverflow.com/questions/3679694
 
-        partof: #SPC-random
-        """
-        total = sum(weights)
-        r = random.uniform(0, total)
-        upto = 0
-        for c, w in zip(choices, weights):
-            if upto + w >= r:
-                return c
-            upto += w
-        assert False, "Shouldn't get here"
+    partof: #SPC-random
+    """
+    total = sum(weights)
+    r = random.uniform(0, total)
+    upto = 0
+    for c, w in zip(choices, weights):
+        if upto + w >= r:
+            return c
+        upto += w
+    assert False, "Shouldn't get here"

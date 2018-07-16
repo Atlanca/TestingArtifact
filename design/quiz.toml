@@ -1,6 +1,7 @@
 [SPC-quiz]
 partof = "REQ-purpose"
 text = ''' 
+# Purpose
 - [[SPC-quiz-get]]: get a question to ask based on
 previously answered questions.
 - [[SPC-quiz-ask]]: ask the user a question 
